@@ -49,4 +49,9 @@ public class MemberService {
 
         return "The member with that id does not exist";
     }
+
+    public List<Member> getMembersByLastName(String lastName) {
+    return memberRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
+}
+
 }

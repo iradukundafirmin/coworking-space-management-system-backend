@@ -1,5 +1,6 @@
 package com.coworking.coworkingspacemanagementsystem.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -7,6 +8,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.coworking.coworkingspacemanagementsystem.entity.DeskBooking;
+import com.coworking.coworkingspacemanagementsystem.entity.DeskBookingStatus;
 import com.coworking.coworkingspacemanagementsystem.repository.DeskBookingRepository;
 
 @Service
@@ -23,8 +25,16 @@ public class DeskBookingService {
         return "Desk booking saved successfully";
     }
 
+    public List<DeskBooking> getBookingsBetween(LocalDate start, LocalDate end) {
+        return deskBookingRepository.findByBookingDateBetweenOrderByBookingDateAsc(start, end);
+    }
+
     public List<DeskBooking> getAllDeskBookings() {
         return deskBookingRepository.findAll();
+    }
+
+    public List<DeskBooking> getBookingsByStatus(DeskBookingStatus status) {
+        return deskBookingRepository.findByStatusOrderByBookingDateAsc(status);
     }
 
     public Optional<DeskBooking> getDeskBookingById(UUID id) {

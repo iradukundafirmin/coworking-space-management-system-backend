@@ -1,5 +1,6 @@
 package com.coworking.coworkingspacemanagementsystem.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -13,10 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coworking.coworkingspacemanagementsystem.entity.DeskBooking;
+import com.coworking.coworkingspacemanagementsystem.entity.DeskBookingStatus;
 import com.coworking.coworkingspacemanagementsystem.service.DeskBookingService;
+
 
 @RestController
 @RequestMapping("/api/desk-bookings")
@@ -44,7 +48,7 @@ public class DeskBookingController {
         return new ResponseEntity<>(deskBookingService.getAllDeskBookings(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id:[0-9a-fA-F-]{36}}")
     public ResponseEntity<?> getDeskBookingById(@PathVariable UUID id) {
         Optional<DeskBooking> deskBooking = deskBookingService.getDeskBookingById(id);
 
@@ -54,6 +58,27 @@ public class DeskBookingController {
             return new ResponseEntity<>("The desk booking with that id does not exist", HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/by-status")
+    
+    public ResponseEntity<List<DeskBooking>> getBookingsByStatus(@RequestParam DeskBookingStatus status) {
+        return new ResponseEntity<>(
+            deskBookingService.getBookingsByStatus(status),
+            HttpStatus.OK
+        );
+        }
+
+    @GetMapping("/between")
+    public ResponseEntity<List<DeskBooking>> getBookingsBetween(
+        @RequestParam String start,
+        @RequestParam String end) {
+            LocalDate startDate = LocalDate.parse(start);
+            LocalDate endDate = LocalDate.parse(end);
+            return new ResponseEntity<>(
+                deskBookingService.getBookingsBetween(startDate, endDate),
+                HttpStatus.OK
+            );
+        }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateDeskBooking(@PathVariable UUID id, @RequestBody DeskBooking deskBooking) {
