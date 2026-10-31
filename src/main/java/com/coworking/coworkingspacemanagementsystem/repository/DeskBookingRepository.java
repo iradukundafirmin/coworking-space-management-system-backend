@@ -8,12 +8,20 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.coworking.coworkingspacemanagementsystem.entity.DeskBooking;
 import com.coworking.coworkingspacemanagementsystem.entity.DeskBookingStatus;
+import com.coworking.coworkingspacemanagementsystem.entity.Host;
 
 public interface DeskBookingRepository extends JpaRepository<DeskBooking, UUID> {
 
     List<DeskBooking> findByStatusOrderByBookingDateAsc(DeskBookingStatus status);
-    
+
     List<DeskBooking> findByBookingDateBetweenOrderByBookingDateAsc(
         LocalDate start, LocalDate end);
+
+    boolean existsByHostAndBookingDateAndStatusNot(
+        Host host,
+        LocalDate bookingDate,
+        DeskBookingStatus status);
+
+
 
 }

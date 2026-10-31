@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,14 +34,19 @@ public class DeskBookingController {
     }
 
     @PostMapping("/save")
+    
+    @SuppressWarnings("ConvertToStringSwitch")
     public ResponseEntity<String> saveDeskBooking(@RequestBody DeskBooking deskBooking) {
-        String message = deskBookingService.saveDeskBooking(deskBooking);
 
-        if (message.equals("Desk booking saved successfully")) {
-            return new ResponseEntity<>(message, HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
-        }
+    String result = deskBookingService.saveDeskBooking(deskBooking);
+    
+    if (result.equals("Desk booking saved successfully")) {
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    } else if (result.equals("Desk booking date cannot be in the past")) {
+        return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+    } else {
+        return new ResponseEntity<>(result, HttpStatus.CONFLICT);
+    }
     }
 
     @GetMapping("/all")
@@ -101,4 +107,21 @@ public class DeskBookingController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
-}
+
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<String> updateBookingStatus(
+         @PathVariable UUID id,
+         @RequestParam DeskBookingStatus status) {
+            
+            String result = deskBookingService.updateBookingStatus(id, status);
+            
+            if (result.equals("The desk booking with that id does not exist")) {
+                return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
+            } else if (result.equals("Desk booking status updated successfully")) {
+                return new ResponseEntity<>(result, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+            }
+        }
+    }

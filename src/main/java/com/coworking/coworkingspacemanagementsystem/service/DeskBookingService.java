@@ -21,9 +21,28 @@ public class DeskBookingService {
     }
 
     public String saveDeskBooking(DeskBooking deskBooking) {
-        deskBookingRepository.save(deskBooking);
-        return "Desk booking saved successfully";
+
+    if (deskBooking.getBookingDate().isBefore(LocalDate.now())) {
+        return "Desk booking date cannot be in the past";
     }
+
+    boolean alreadyBooked = deskBookingRepository
+            .existsByHostAndBookingDateAndStatusNot(
+                    deskBooking.getHost(),
+                    deskBooking.getBookingDate(),
+                    DeskBookingStatus.WITHDRAWN
+            );
+
+    if (alreadyBooked) {
+        return "Host already has a desk booking on that date";
+    }
+
+    deskBooking.setStatus(DeskBookingStatus.RESERVED);
+
+    deskBookingRepository.save(deskBooking);
+
+    return "Desk booking saved successfully";
+}
 
     public List<DeskBooking> getBookingsBetween(LocalDate start, LocalDate end) {
         return deskBookingRepository.findByBookingDateBetweenOrderByBookingDateAsc(start, end);
@@ -42,11 +61,18 @@ public class DeskBookingService {
     }
 
     public Optional<DeskBooking> updateDeskBooking(UUID id, DeskBooking deskBooking) {
-        if (deskBookingRepository.existsById(id)) {
-            deskBooking.setId(id);
-            return Optional.of(deskBookingRepository.save(deskBooking));
-        }
-        return Optional.empty();
+
+    Optional<DeskBooking> optionalBooking = deskBookingRepository.findById(id);
+
+    if (optionalBooking.isPresent()) {
+        deskBooking.setId(id);
+        deskBooking.setStatus(optionalBooking.get().getStatus());
+
+        return Optional.of(deskBookingRepository.save(deskBooking));
+    }
+
+    return Optional.empty();
+
     }
 
     public String deleteDeskBooking(UUID id) {
@@ -59,4 +85,42 @@ public class DeskBookingService {
 
         return "The desk booking with that id does not exist";
     }
+
+    public String updateBookingStatus(UUID id, DeskBookingStatus newStatus) {
+
+    Optional<DeskBooking> optionalBooking = deskBookingRepository.findById(id);
+
+    if (optionalBooking.isEmpty()) {
+        return "The desk booking with that id does not exist";
+    }
+
+    DeskBooking booking = optionalBooking.get();
+
+    DeskBookingStatus currentStatus = booking.getStatus();
+
+    boolean allowed = false;
+
+    if (currentStatus == DeskBookingStatus.RESERVED) {
+        if (newStatus == DeskBookingStatus.IN_USE ||
+                newStatus == DeskBookingStatus.WITHDRAWN) {
+            allowed = true;
+        }
+    } else if (currentStatus == DeskBookingStatus.IN_USE) {
+        if (newStatus == DeskBookingStatus.ENDED ||
+                newStatus == DeskBookingStatus.WITHDRAWN) {
+            allowed = true;
+        }
+    }
+
+    if (!allowed) {
+        return "Cannot change status from " + currentStatus + " to " + newStatus;
+    }
+
+    booking.setStatus(newStatus);
+    deskBookingRepository.save(booking);
+
+    return "Desk booking status updated successfully";
+}
+
+    
 }
