@@ -10,15 +10,20 @@ import org.springframework.stereotype.Service;
 import com.coworking.coworkingspacemanagementsystem.entity.DeskBooking;
 import com.coworking.coworkingspacemanagementsystem.entity.DeskBookingStatus;
 import com.coworking.coworkingspacemanagementsystem.repository.DeskBookingRepository;
+import com.coworking.coworkingspacemanagementsystem.repository.UsageChargeRepository;
 
 @Service
 public class DeskBookingService {
 
     private final DeskBookingRepository deskBookingRepository;
+    private final UsageChargeRepository usageChargeRepository;
 
-    public DeskBookingService(DeskBookingRepository deskBookingRepository) {
-        this.deskBookingRepository = deskBookingRepository;
-    }
+    public DeskBookingService(
+        DeskBookingRepository deskBookingRepository,
+        UsageChargeRepository usageChargeRepository) {
+            this.deskBookingRepository = deskBookingRepository;
+            this.usageChargeRepository = usageChargeRepository;
+        }
 
     public String saveDeskBooking(DeskBooking deskBooking) {
 
@@ -60,6 +65,10 @@ public class DeskBookingService {
         return deskBookingRepository.findById(id);
     }
 
+    public List<Object[]> getBookingStatsByStatus() {
+    return deskBookingRepository.countBookingsByStatus();
+}
+
     public Optional<DeskBooking> updateDeskBooking(UUID id, DeskBooking deskBooking) {
 
     Optional<DeskBooking> optionalBooking = deskBookingRepository.findById(id);
@@ -76,16 +85,21 @@ public class DeskBookingService {
     }
 
     public String deleteDeskBooking(UUID id) {
-        Optional<DeskBooking> deskBooking = deskBookingRepository.findById(id);
 
-        if (deskBooking.isPresent()) {
-            deskBookingRepository.delete(deskBooking.get());
-            return "Desk booking deleted successfully";
-        }
+    Optional<DeskBooking> optionalBooking = deskBookingRepository.findById(id);
 
+    if (optionalBooking.isEmpty()) {
         return "The desk booking with that id does not exist";
     }
 
+    if (usageChargeRepository.existsByDeskBooking(optionalBooking.get())) {
+        return "That desk booking has usage charges, delete them first";
+    }
+
+    deskBookingRepository.delete(optionalBooking.get());
+
+    return "Desk booking deleted successfully";
+}
     public String updateBookingStatus(UUID id, DeskBookingStatus newStatus) {
 
     Optional<DeskBooking> optionalBooking = deskBookingRepository.findById(id);

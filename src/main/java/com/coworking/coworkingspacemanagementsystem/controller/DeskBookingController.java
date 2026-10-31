@@ -86,6 +86,16 @@ public class DeskBookingController {
             );
         }
 
+    @GetMapping("/stats/by-status")
+    public ResponseEntity<List<Object[]>> getBookingStatsByStatus() {
+        return new ResponseEntity<>(
+            deskBookingService.getBookingStatsByStatus(),
+            HttpStatus.OK
+    );
+
+}
+
+
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateDeskBooking(@PathVariable UUID id, @RequestBody DeskBooking deskBooking) {
         Optional<DeskBooking> updatedDeskBooking = deskBookingService.updateDeskBooking(id, deskBooking);
@@ -99,14 +109,15 @@ public class DeskBookingController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteDeskBooking(@PathVariable UUID id) {
-        String message = deskBookingService.deleteDeskBooking(id);
-
-        if (message.equals("Desk booking deleted successfully")) {
-            return new ResponseEntity<>(message, HttpStatus.OK);
+        String result = deskBookingService.deleteDeskBooking(id);
+        if (result.equals("The desk booking with that id does not exist")) {
+            return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
+        } else if (result.equals("That desk booking has usage charges, delete them first")) {
+            return new ResponseEntity<>(result, HttpStatus.CONFLICT);
         } else {
-            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
-        }
+            return new ResponseEntity<>(result, HttpStatus.OK);
     }
+}
 
 
     @PatchMapping("/{id}/status")
@@ -124,4 +135,15 @@ public class DeskBookingController {
                 return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
             }
         }
+
+    @PatchMapping("/cancel-day")
+    public ResponseEntity<String> cancelBookingsForHost(
+        @RequestParam UUID hostId,
+        @RequestParam String date) {
+            LocalDate bookingDate = LocalDate.parse(date);
+            String result = deskBookingService.cancelBookingsForHost(hostId, bookingDate);
+            
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        
     }
+}
