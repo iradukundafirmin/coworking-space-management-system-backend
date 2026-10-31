@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coworking.coworkingspacemanagementsystem.entity.Host;
@@ -54,6 +55,14 @@ public class HostController {
             return new ResponseEntity<>("The host with that id does not exist", HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/by-facility")
+    public ResponseEntity<List<Host>> getHostsByFacilityName(@RequestParam String name) {
+        return new ResponseEntity<>(
+            hostService.getHostsByFacilityName(name),
+            HttpStatus.OK
+    );
+}
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateHost(@PathVariable UUID id, @RequestBody Host host) {

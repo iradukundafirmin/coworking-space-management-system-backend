@@ -23,6 +23,10 @@ public class HostService {
         return "Host saved successfully";
     }
 
+    public List<Host> getHostsByFacilityName(String name) {
+        return hostRepository.findHostsByFacilityName(name);
+    }
+
     public List<Host> getAllHosts() {
         return hostRepository.findAll();
     }

@@ -31,6 +31,10 @@ public class FacilityService {
         return facilityRepository.findById(id);
     }
 
+    public List<Facility> getUnusedFacilities() {
+        return facilityRepository.findUnusedFacilities();
+    }
+
     public Optional<Facility> updateFacility(UUID id, Facility facility) {
         Optional<Facility> existingFacility = facilityRepository.findById(id);
 

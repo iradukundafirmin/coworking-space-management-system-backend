@@ -58,6 +58,14 @@ public class FacilityController {
         }
     }
 
+    @GetMapping("/unused")
+    public ResponseEntity<List<Facility>> getUnusedFacilities() {
+        return new ResponseEntity<>(
+            facilityService.getUnusedFacilities(),
+            HttpStatus.OK
+        );
+    }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateFacility(@PathVariable UUID id, @RequestBody Facility facility) {
         Optional<Facility> updatedFacility = facilityService.updateFacility(id, facility);

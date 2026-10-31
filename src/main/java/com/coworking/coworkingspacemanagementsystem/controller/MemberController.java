@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.coworking.coworkingspacemanagementsystem.entity.Host;
 import com.coworking.coworkingspacemanagementsystem.entity.Member;
+import com.coworking.coworkingspacemanagementsystem.service.HostService;
 import com.coworking.coworkingspacemanagementsystem.service.MemberService;
 
 @RestController
@@ -28,6 +31,9 @@ public class MemberController {
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
+    
+    @Autowired
+    private HostService hostService;
 
     @PostMapping("/save")
     public ResponseEntity<String> saveMember(@RequestBody Member member) {
@@ -64,6 +70,22 @@ public class MemberController {
     );
 }
 
+    @GetMapping("/of-host/{hostId}")
+    public ResponseEntity<?> getMembersOfHost(@PathVariable UUID hostId) {
+        Optional<Host> host = hostService.getHostById(hostId);
+        if (host.isPresent()) {
+            return new ResponseEntity<>(
+                memberService.getMembersOfHost(hostId),
+                HttpStatus.OK
+        );
+    } else {
+        return new ResponseEntity<>(
+             "The host with that id does not exist",
+             HttpStatus.NOT_FOUND
+            );
+    }
+}
+
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateMember(@PathVariable UUID id, @RequestBody Member member) {
         Optional<Member> updatedMember = memberService.updateMember(id, member);
@@ -85,4 +107,5 @@ public class MemberController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+ 
 }

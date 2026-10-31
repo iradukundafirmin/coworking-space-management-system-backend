@@ -50,8 +50,12 @@ public class MemberService {
         return "The member with that id does not exist";
     }
 
+    public List<Member> getMembersOfHost(UUID hostId) {
+        return memberRepository.findMembersByHostId(hostId);
+    }
+
     public List<Member> getMembersByLastName(String lastName) {
-    return memberRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
-}
+        return memberRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
+    }
 
 }

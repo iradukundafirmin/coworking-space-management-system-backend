@@ -23,6 +23,10 @@ public class FloorService {
         return "Floor saved successfully";
     }
 
+    public List<Floor> getFreeFloors() {
+        return floorRepository.findFreeFloors();
+    }
+
     public List<Floor> getAllFloors() {
         return floorRepository.findAll();
     }

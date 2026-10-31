@@ -12,6 +12,7 @@ import com.coworking.coworkingspacemanagementsystem.entity.DeskBookingStatus;
 public interface DeskBookingRepository extends JpaRepository<DeskBooking, UUID> {
 
     List<DeskBooking> findByStatusOrderByBookingDateAsc(DeskBookingStatus status);
+    
     List<DeskBooking> findByBookingDateBetweenOrderByBookingDateAsc(
         LocalDate start, LocalDate end);
 

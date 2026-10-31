@@ -55,6 +55,14 @@ public class FloorController {
         }
     }
 
+    @GetMapping("/free")
+    public ResponseEntity<List<Floor>> getFreeFloors() {
+        return new ResponseEntity<>(
+            floorService.getFreeFloors(),
+            HttpStatus.OK
+    );
+    }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateFloor(@PathVariable UUID id, @RequestBody Floor floor) {
         Optional<Floor> updatedFloor = floorService.updateFloor(id, floor);
