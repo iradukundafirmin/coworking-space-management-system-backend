@@ -21,6 +21,9 @@ public interface DeskBookingRepository extends JpaRepository<DeskBooking, UUID> 
     List<DeskBooking> findByBookingDateBetweenOrderByBookingDateAsc(
         LocalDate start, LocalDate end);
 
+    long countByBookingDate(LocalDate bookingDate);
+    long countByStatus(DeskBookingStatus status);
+
     boolean existsByHostAndBookingDateAndStatusNot(
         Host host,
         LocalDate bookingDate,
@@ -42,5 +45,6 @@ public interface DeskBookingRepository extends JpaRepository<DeskBooking, UUID> 
         @Param("newStatus") DeskBookingStatus newStatus,
         @Param("excludedStatus") DeskBookingStatus excludedStatus
 );
+
 
 }

@@ -136,5 +136,16 @@ public class DeskBookingService {
     return "Desk booking status updated successfully";
 }
 
+public String cancelBookingsForHost(UUID hostId, LocalDate date) {
+
+    int cancelled = deskBookingRepository.cancelBookingsForHost(
+            hostId,
+            date,
+            DeskBookingStatus.WITHDRAWN,
+            DeskBookingStatus.ENDED
+    );
+
+    return cancelled + " desk bookings cancelled";
+}
     
 }
