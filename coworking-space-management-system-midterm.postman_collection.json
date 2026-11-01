@@ -1,0 +1,1135 @@
+{
+  "info": {
+    "_postman_id": "d30eacef-c02f-4326-92d3-49656af3c1a9",
+    "name": "Web Tech mid sem",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56905320",
+    "_collection_link": "https://go.postman.co/collection/56905320-d30eacef-c02f-4326-92d3-49656af3c1a9?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "A2",
+      "item": [
+        {
+          "name": "Facility CRUD",
+          "item": [
+            {
+              "name": "A2-Save Facility",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Meeting Room\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/facilities/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "facilities",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2-Get All Facilities",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/facilities/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "facilities",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2-Get Facility",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/facilities/FACILITY_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "facilities",
+                    "FACILITY_ID"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2-Update Facility",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Updated Meeting Room\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/facilities/update/FACILITY_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "facilities",
+                    "update",
+                    "FACILITY_ID"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2-Delete Facility",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/facilities/delete/FACILITY_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "facilities",
+                    "delete",
+                    "FACILITY_ID"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Floor CRUD",
+          "item": [
+            {
+              "name": "A2 - Delete Floor",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/floors/delete/FLOOR_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "floors",
+                    "delete",
+                    "FLOOR_ID"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Update Floor",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"floorNumber\": 4,\r\n    \"name\": \"Updated Fourth Floor\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/floors/update/FLOOR_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "floors",
+                    "update",
+                    "FLOOR_ID"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2-Get Floor",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/floors/FLOOR_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "floors",
+                    "FLOOR_ID"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2-Get All Floors",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/floors/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "floors",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2-Save Floor",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"floorNumber\": 4,\r\n    \"name\": \"Fourth Floor\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/floors/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "floors",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Host CRUD",
+          "item": [
+            {
+              "name": "A2 - Save Host",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"firstName\": \"Jean\",\r\n    \"lastName\": \"Mugisha\",\r\n    \"email\": \"jean.mugisha@example.com\",\r\n    \"floor\": {\r\n        \"id\": \"FLOOR_ID\"\r\n    },\r\n    \"facilities\": [\r\n        {\r\n            \"id\": \"FACILITY_ID\"\r\n        }\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/hosts/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "hosts",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Get All Hosts",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/hosts/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "hosts",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Get Host",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/hosts/HOST_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "hosts",
+                    "HOST_ID"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Update Host",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"firstName\": \"Jean Updated\",\r\n    \"lastName\": \"Mugisha\",\r\n    \"email\": \"jean.mugisha@example.com\",\r\n    \"floor\": {\r\n        \"id\": \"FLOOR_ID\"\r\n    },\r\n    \"facilities\": [\r\n        {\r\n            \"id\": \"FACILITY_ID\"\r\n        }\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/hosts/update/HOST_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "hosts",
+                    "update",
+                    "HOST_ID"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Delete Host",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/hosts/delete/HOST_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "hosts",
+                    "delete",
+                    "HOST_ID"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Member CRUD",
+          "item": [
+            {
+              "name": "A2 - Save Member",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"firstName\": \"Firmin\",\r\n    \"lastName\": \"Iradukunda\",\r\n    \"memberCode\": \"MBR-0078\",\r\n    \"email\": \"firmin@example.com\",\r\n    \"phone\": \"0788123456\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/members/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "members",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Get All Members",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/members/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "members",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Get Member",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/members/MEMBER_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "members",
+                    "MEMBER_ID"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Update Member",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"firstName\": \"Firmin Updated\",\r\n    \"lastName\": \"Iradukunda\",\r\n    \"memberCode\": \"MBR-0078\",\r\n    \"email\": \"firmin@example.com\",\r\n    \"phone\": \"0788123456\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/members/update/MEMBER_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "members",
+                    "update",
+                    "MEMBER_ID"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Delete Member",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/members/delete/MEMBER_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "members",
+                    "delete",
+                    "MEMBER_ID"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Desk Bookings CRUD",
+          "item": [
+            {
+              "name": "A2 - Save Desk Booking",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"bookingDate\": \"2026-11-25\",\r\n    \"status\": \"RESERVED\",\r\n    \"facilityName\": \"Meeting Room\",\r\n    \"hours\": 3,\r\n    \"member\": {\r\n        \"id\": \"MEMBER_ID\"\r\n    },\r\n    \"host\": {\r\n        \"id\": \"HOST_ID\"\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/desk-bookings/save",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "desk-bookings",
+                    "save"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Get All Desk Bookings",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/desk-bookings/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "desk-bookings",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Get Desk Booking",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/desk-bookings/DESK_BOOKING_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "desk-bookings",
+                    "DESK_BOOKING_ID"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Update Desk Booking",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"bookingDate\": \"2026-11-25\",\r\n    \"status\": \"RESERVED\",\r\n    \"facilityName\": \"Meeting Room\",\r\n    \"hours\": 5,\r\n    \"member\": {\r\n        \"id\": \"MEMBER_ID\"\r\n    },\r\n    \"host\": {\r\n        \"id\": \"HOST_ID\"\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/desk-bookings/update/DESK_BOOKING_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "desk-bookings",
+                    "update",
+                    "DESK_BOOKING_ID"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "A2 - Delete Desk Booking",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/desk-bookings/delete/DESK_BOOKING_ID",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "desk-bookings",
+                    "delete",
+                    "DESK_BOOKING_ID"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "B",
+      "item": [
+        {
+          "name": "B1 - Members by Last Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/members/by-last-name?lastName=iradukunda",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "members",
+                "by-last-name"
+              ],
+              "query": [
+                {
+                  "key": "lastName",
+                  "value": "iradukunda"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B2 - Bookings by Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/desk-bookings/by-status?status=RESERVED",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "desk-bookings",
+                "by-status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "RESERVED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B3 - Bookings Between Dates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/desk-bookings/between?start=2026-10-01&end=2026-10-31",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "desk-bookings",
+                "between"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "2026-10-01"
+                },
+                {
+                  "key": "end",
+                  "value": "2026-10-31"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "C",
+      "item": [
+        {
+          "name": "C1 - Hosts by Facility",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/hosts/by-facility?name=Hot%20Desk",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "hosts",
+                "by-facility"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Hot%20Desk"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C2 - Free Floors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/floors/free",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "floors",
+                "free"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C3 - Unused Facilities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/facilities/unused",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "facilities",
+                "unused"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C4 - Members of a Host",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/members/of-host/HOST_ID",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "members",
+                "of-host",
+                "HOST_ID"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "D",
+      "item": [
+        {
+          "name": "D1 - Safe desk booking",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"bookingDate\": \"2026-11-25\",\r\n    \"facilityName\": \"Meeting Room\",\r\n    \"hours\": 2,\r\n    \"member\": {\r\n        \"id\": \"MEMBER_ID\"\r\n    },\r\n    \"host\": {\r\n        \"id\": \"HOST_ID\"\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/desk-bookings/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "desk-bookings",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D2 - Change booking status",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/desk-bookings/DESK_BOOKING_ID/status?status=IN_USE",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "desk-bookings",
+                "DESK_BOOKING_ID",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "IN_USE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D3 - Add facility to host",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/hosts/HOST_ID/facilities/FACILITY_ID",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "hosts",
+                "HOST_ID",
+                "facilities",
+                "FACILITY_ID"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D4 - Move host to another floor",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/hosts/HOST_ID/floor?floorNumber=4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "hosts",
+                "HOST_ID",
+                "floor"
+              ],
+              "query": [
+                {
+                  "key": "floorNumber",
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "E",
+      "item": [
+        {
+          "name": "E1 - Save usage charge",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"chargeName\": \"Printing\",\r\n    \"notes\": \"Additional printing usage\",\r\n    \"amount\": 1500\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/usage-charges/save?deskBookingId=ENDED_BOOKING_ID",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "usage-charges",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "deskBookingId",
+                  "value": "ENDED_BOOKING_ID"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E2 - Get charges by member",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/usage-charges/member/MBR-0078",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "usage-charges",
+                "member",
+                "MBR-0078"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E3 - Delete usage charge",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/usage-charges/delete/USAGE_CHARGE_ID",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "usage-charges",
+                "delete",
+                "USAGE_CHARGE_ID"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "F",
+      "item": [
+        {
+          "name": "F1 - Booking stats by status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/desk-bookings/stats/by-status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "desk-bookings",
+                "stats",
+                "by-status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "F2 - Cancel booking on a date",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/desk-bookings/cancel-day?hostId=HOST_ID&date=2026-10-20",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "desk-bookings",
+                "cancel-day"
+              ],
+              "query": [
+                {
+                  "key": "hostId",
+                  "value": "HOST_ID"
+                },
+                {
+                  "key": "date",
+                  "value": "2026-10-20"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bonus",
+      "item": [
+        {
+          "name": "Bonus 1 - Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/dashboard/summary",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "dashboard",
+                "summary"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
